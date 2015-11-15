@@ -15,7 +15,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala).settings(
     "org.skinny-framework" %% "skinny-http-client"           % skinnyVersion, // instead of ws
     "org.scalikejdbc"      %% "scalikejdbc-play-initializer" % "2.4.+",
     "org.flywaydb"         %% "flyway-play"                  % "2.2.0",
-    "com.h2database"       %  "h2"                           % "1.4.+"
+    "com.h2database"       %  "h2"                           % "1.4.+",
+    "mysql"                %  "mysql-connector-java"         % "5.1.6"
   )
 ).settings(scalariformSettings: _*)
 
@@ -29,4 +30,3 @@ lazy val task = (project in file("task")).settings(
   ),
   mainClass := Some("TaskRunnner")
 )
-
