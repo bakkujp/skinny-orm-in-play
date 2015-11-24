@@ -15,6 +15,7 @@ class Twitter extends Controller with JsonReadWrites {
   private[this] val JsonContentType = "application/json"
 
   def index = Action {
+    println(Account.findSample())
     Ok(views.html.index())
   }
 
