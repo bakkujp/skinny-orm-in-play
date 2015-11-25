@@ -27,8 +27,8 @@ object Account extends SkinnyCRUDMapper[Account] {
     many = Email,
     merge = (a, emails) => a.copy(emails = emails)).byDefault
 
-  def findSample(): Option[Account] = {
-    joins(Account.emailRef).findById(1)
+  def findSample(): Seq[Account] = {
+    joins(Account.emailRef).findAll();
   }
 }
 

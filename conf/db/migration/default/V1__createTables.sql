@@ -29,6 +29,15 @@ create table account_email (
   email_id int not null
 );
 
+INSERT INTO email (id, email) VALUES (1, "bachpt@gmail.com");
+INSERT INTO email (id, email) VALUES (2, "fluffbaby@yahoo.com");
+INSERT INTO account (id, name) VALUES (1, "bachpt");
+INSERT INTO account (id, name) VALUES (2, "fluff");
+INSERT INTO account_email (account_id, email_id) VALUES (1, 1);
+INSERT INTO account_email (account_id, email_id) VALUES (1, 2);
+INSERT INTO account_email (account_id, email_id) VALUES (2, 1);
+INSERT INTO account_email (account_id, email_id) VALUES (2, 2);
+
 
 
 
