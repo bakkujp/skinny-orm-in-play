@@ -22,13 +22,21 @@ object Account extends SkinnyCRUDMapper[Account] {
   override def defaultAlias = createAlias("a")
   override def extract(rs: WrappedResultSet, n: ResultName[Account]) = new Account(id = rs.get(n.id), name = rs.get(n.name))
 
+  //  lazy val emailRef = hasManyThrough[Email](
+  //    through = AccountEmail,
+  //    many = Email,
+  //    merge = (a, emails) => a.copy(emails = emails)
+  //  ).byDefault
+
   lazy val emailRef = hasManyThrough[Email](
     through = AccountEmail,
     many = Email,
-    merge = (a, emails) => a.copy(emails = emails)).byDefault
+    merge = (a, emails) => a.copy(emails = emails)
+  ).includes[Email]((ae, emails) => ae.map(a => a.copy(emails = emails.filter(_.email.eq("bachphan@gmail.com")))))
 
   def findSample(): Seq[Account] = {
-    joins(Account.emailRef).findAll();
+    // joins(Account.emailRef).findAll();
+    Account.includes(Account.emailRef).findAll(
   }
 }
 

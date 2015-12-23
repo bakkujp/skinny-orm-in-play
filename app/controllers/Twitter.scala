@@ -21,7 +21,6 @@ class Twitter extends Controller with JsonReadWrites {
 
   def showTimeline = Action {
     val tweets = Tweet.findRecent();
-    println(tweets)
     Ok(Json.toJson(tweets)).as(JsonContentType)
   }
 
